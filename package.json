@@ -1,0 +1,30 @@
+{
+  "type": "module",
+  "dependencies": {
+    "express": "5.3.0",
+    "mysql2": "^3.24.6"
+  },
+  "name": "api-treinamentos-industriais",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch --env-file=.env app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KauaZastrow/api-treinamentos-industriais.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KauaZastrow/api-treinamentos-industriais/issues"
+  },
+  "homepage": "https://github.com/KauaZastrow/api-treinamentos-industriais#readme"
+}
