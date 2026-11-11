@@ -19,7 +19,7 @@ export async function listar() {
 }
 
 export async function buscarPorNome(nome) {
-    const sql = "SELECT * FROM instrutor WHERE LIKE = ?";
+    const sql = "SELECT * FROM instrutor WHERE nome LIKE = ?";
     const termoBusca = `%${nome}%`
     const [resultado] = await conexao.execute(sql, [termoBusca]);
 

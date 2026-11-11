@@ -26,7 +26,7 @@ export async function buscarPorId(id) {
 }
 
 export async function buscarPorNome(nome) {
-    const sql = "SELECT * FROM treinamento WHERE LIKE = ?";
+    const sql = "SELECT * FROM treinamento WHERE nome LIKE = ?";
     const termoBusca = `%${nome}%`
     const [resultado] = await conexao.execute(sql, [termoBusca]);
 

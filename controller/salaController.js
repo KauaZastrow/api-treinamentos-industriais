@@ -3,13 +3,13 @@ import { atualizar, cadastrar, listar, deletar, buscarPorId, buscarPorNome } fro
 
 export async function cadastrarSala(req, res) {
     try {
-        const { nome, descricao } = req.body;
+        const { nome, capacidade, localizacao } = req.body;
 
-        if (!nome || !descricao) return res.status(400).json({
+        if (!nome || !capacidade || !localizacao) return res.status(400).json({
             mensagem: "Nome e descricao sao obrigatorias"
         })
 
-        const sala = new Sala(nome, descricao);
+        const sala = new Sala(nome, capacidade, localizacao);
 
         const id = await cadastrar(sala);
 
@@ -83,14 +83,18 @@ export async function atualizarSala(req, res) {
             return res.status(404).json({ mensagem: "Sala não encontrada" })
         }
 
-        const { nome, descricao } = req.body;
+        const { nome, capacidade, localizacao } = req.body;
 
         if (nome != undefined) {
             sala.nome = nome;
         }
 
-        if (descricao != undefined) {
-            sala.descricao = descricao;
+        if (capacidade != undefined) {
+            sala.capacidade = capacidade;
+        }
+
+        if (localizacao != undefined) {
+            sala.localizacao = localizacao;
         }
 
         const resultado = await atualizar(id, sala);

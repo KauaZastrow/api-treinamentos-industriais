@@ -3,13 +3,13 @@ import { atualizar, cadastrar, listar, deletar, buscarPorId, buscarPorNome } fro
 
 export async function cadastrarTreinamento(req, res) {
     try {
-        const { nome, descricao } = req.body;
+        const { nome, cargaHoraria, modalidade } = req.body;
 
-        if (!nome || !descricao) return res.status(400).json({
+        if (!nome || !cargaHoraria || !modalidade) return res.status(400).json({
             mensagem: "Nome e descricao sao obrigatorias"
         })
 
-        const treinamento = new Treinamento(nome, descricao);
+        const treinamento = new Treinamento(nome, cargaHoraria, modalidade);
 
         const id = await cadastrar(treinamento);
 
@@ -83,14 +83,18 @@ export async function atualizarTreinamento(req, res) {
             return res.status(404).json({ mensagem: "Treinamento não encontrada" })
         }
 
-        const { nome, descricao } = req.body;
+        const { nome, cargaHoraria, modalidade } = req.body;
 
         if (nome != undefined) {
             treinamento.nome = nome;
         }
 
-        if (descricao != undefined) {
-            treinamento.descricao = descricao;
+        if (cargaHoraria != undefined) {
+            treinamento.cargaHoraria = cargaHoraria;
+        }
+
+        if (modalidade != undefined) {
+            treinamento.modalidade = modalidade;
         }
 
         const resultado = await atualizar(id, treinamento);
